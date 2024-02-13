@@ -15,6 +15,6 @@ class Solution {
         if(reverse.equals(temp)){
             return true;
         }
-        else return false;
+       return false;
     }
 }
