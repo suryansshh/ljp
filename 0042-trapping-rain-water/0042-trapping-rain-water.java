@@ -1,16 +1,25 @@
+
 class Solution {
     public int trap(int[] height) {
-        int left = 0, right = height.length - 1, totalWater = 0, leftMax = 0, rightMax = 0;
-        while (left <= right) {
-            leftMax = Math.max(height[left], leftMax);
-            rightMax = Math.max(height[right], rightMax);
-			 
-            if (leftMax < rightMax) {
-                totalWater += leftMax - height[left++];
-            } else {
-                totalWater += rightMax - height[right--];
+        return check(height);
+    }
+    public int check(int[] arr){
+         int n = arr.length;
+        int waterTrapped = 0;
+        for (int i = 0; i < n; i++) {
+            int j = i;
+            int leftMax = 0, rightMax = 0;
+            while (j >= 0) {
+                leftMax = Math.max(leftMax, arr[j]);
+                j--;
             }
+            j = i;
+            while (j < n) {
+                rightMax = Math.max(rightMax, arr[j]);
+                j++;
+            }
+            waterTrapped += Math.min(leftMax, rightMax) - arr[i];
         }
-        return totalWater;
+        return waterTrapped;
     }
 }
