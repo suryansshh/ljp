@@ -1,25 +1,24 @@
 class Solution {
     public boolean check(int[] nums) {
-        boolean check_asc = check_ascending(nums);
-        boolean check_dsc = check_descending(nums);
-        return (check_asc == check_dsc);    
-    }
-
-    // Corrected the method name and parameter
-    public boolean check_ascending(int[] nums) {
-        int count = 0;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] > nums[i - 1]) count++;
+        int spike=0;
+        int n=nums.length;
+        for(int i=0;i<n-1;i++){
+            if(nums[i]<=nums[i+1]){
+                continue;
+            }
+            else{
+                spike++;
+            }
         }
-        return (count >= 1) ? true : false;
-    }
-
-    // Corrected parameter and fixed syntax error
-    public boolean check_descending(int[] nums) {
-        int count = 0;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] < nums[i - 1]) count++;
+        if(nums[n-1]<=nums[0]){
+            
         }
-        return (count >= 1) ? true : false;
+        else{
+            spike++;
+        }
+        if(spike>1){
+            return false;
+        }
+        return true;
     }
 }
