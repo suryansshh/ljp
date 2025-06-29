@@ -1,11 +1,19 @@
+import java.util.Arrays;
+
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        // array sort karo 
-        // check if the next value is same as the last one othorught the array 
+        // Sort the array
         Arrays.sort(nums);
-        for(int i = 0 ;i<nums.length;i++){
-            if(nums[i] == nums[i+1]) return false;
+        
+        // Loop till second last element to avoid ArrayIndexOutOfBoundsException
+        for (int i = 0; i < nums.length - 1; i++) {
+            // Check if current element is equal to the next
+            if (nums[i] == nums[i + 1]) {
+                return true;
+            }
         }
-        return true;
+        
+        // No duplicates found
+        return false;
     }
 }
