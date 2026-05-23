@@ -1,24 +1,21 @@
+
 class Solution {
+
     public boolean check(int[] nums) {
-        int spike=0;
-        int n=nums.length;
-        for(int i=0;i<n-1;i++){
-            if(nums[i]<=nums[i+1]){
-                continue;
+
+        int drops = 0;
+
+        for (int i = 1; i < nums.length; i++) {
+
+            if (nums[i - 1] > nums[i]) {
+                drops++; 
             }
-            else{
-                spike++;
-            }
         }
-        if(nums[n-1]<=nums[0]){
-            
+
+        if (nums[nums.length - 1] > nums[0]) {
+            drops++; 
         }
-        else{
-            spike++;
-        }
-        if(spike>1){
-            return false;
-        }
-        return true;
+
+        return drops < 2;
     }
 }
